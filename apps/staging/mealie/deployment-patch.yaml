@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mealie
+spec:
+  template:
+    spec:
+      containers:
+        - name: mealie
+          volumeMounts:
+            - mountPath: /app/data
+              name: mealie-pvc
+      volumes:
+        - name: mealie-pvc
+          persistentVolumeClaim:
+            claimName: mealie-pvc
