@@ -10,7 +10,7 @@ spec:
   - port: 9000
     protocol: TCP
     targetPort: 9000
-    nodePort: 39000
+    nodePort: 30900
   selector:
     app: mealie
   type: NodePort
