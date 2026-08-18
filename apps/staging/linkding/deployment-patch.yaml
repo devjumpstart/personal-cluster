@@ -3,8 +3,13 @@ kind: Deployment
 metadata:
   name: linkding
 spec:
-  template:
+  template:           # Ensures volume permissions match the user ID
     spec:
+      securityContext:
+        runAsNonRoot: true        # Enforce: Run as Non-Root
+        runAsUser: 1000           # Run as a specific non-root user ID
+        runAsGroup: 1000          # Run as a specific non-root group ID
+        fsGroup: 1000  
       containers:
       - name: linkding
         volumeMounts:
