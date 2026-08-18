@@ -4,8 +4,8 @@ namespace: mealie
 
 resources:
   - ../../base/mealie
-  - pvc.yaml
-  - service.yaml
+  - mealie-pvc.yaml
+  - mealie-svc.yaml
 
 patches:
   - path: deployment-patch.yaml

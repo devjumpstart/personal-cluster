@@ -9,8 +9,8 @@ spec:
         - name: mealie
           volumeMounts:
             - mountPath: /app/data
-              name: mealie-pvc
+              name: mealie-data
       volumes:
-        - name: mealie-pvc
+        - name: mealie-data
           persistentVolumeClaim:
             claimName: mealie-pvc
