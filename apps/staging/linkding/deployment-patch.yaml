@@ -3,13 +3,16 @@ kind: Deployment
 metadata:
   name: linkding
 spec:
-  template:           # Ensures volume permissions match the user ID
+  template:          
     spec:
+       # --- POD-LEVEL SYSTEM & KERNEL HARDENING ---
       securityContext:
-        runAsNonRoot: true        # Enforce: Run as Non-Root
-        runAsUser: 1000           # Run as a specific non-root user ID
-        runAsGroup: 1000          # Run as a specific non-root group ID
-        fsGroup: 1000  
+        runAsNonRoot: true        # Enforce: Blocks the container from starting if it defaults to root (UID 0)
+        runAsUser: 33             # Identity: Configures the process to run explicitly as the 'www-data' user account
+        runAsGroup: 33            # Identity: Configures the process to run explicitly under the 'www-data' group account
+        fsGroup: 33               # Permissions: Automates host storage mounts to be read/write accessible to GID 33
+        seccompProfile:
+          type: RuntimeDefault    # Sandbox: Restricts dangerous low-level Linux system calls to the host kernel
       containers:
       - name: linkding
         volumeMounts:
