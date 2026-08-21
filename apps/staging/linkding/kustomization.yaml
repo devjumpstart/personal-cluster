@@ -4,6 +4,7 @@ resources:
   - ../../base/linkding
   - linkding-pvc.yaml
   - linkding-svc.yaml
+  - linkding-secret.yaml
 
 patches:
   - path: deployment-patch.yaml
