@@ -32,7 +32,6 @@ spec:
             - --config
             - /etc/cloudflared/config/config.yaml
             - run
-            - homelab-staging
 
           ports:
             - name: metrics
