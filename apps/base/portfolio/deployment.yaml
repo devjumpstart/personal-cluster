@@ -25,7 +25,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: portfolio
-          image: devjumpstart/olakunle-portfolio:sha-e8777e1
+          image: devjumpstart/olakunle-portfolio:sha-50150cf
           imagePullPolicy: Always
           env:
             - name: NODE_ENV
