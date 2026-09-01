@@ -4,6 +4,13 @@ metadata:
   name: kube-prometheus-stack
   namespace: monitoring
 spec:
+  values:
+    grafana:
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        hosts:
+          - grafana.olakunle.ca
   valuesFrom:
     - kind: Secret
       name: grafana-admin-password
