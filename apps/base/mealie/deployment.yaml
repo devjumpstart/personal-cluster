@@ -18,7 +18,7 @@ spec:
         fsGroup: 911
 
       containers:
-      - image: ghcr.io/mealie-recipes/mealie:v3.25.0
+      - image: ghcr.io/mealie-recipes/mealie:v3.25.1
         name: mealie
 
         securityContext:
