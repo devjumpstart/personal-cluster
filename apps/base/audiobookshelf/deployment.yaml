@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: audiobookshelf
+  name: audiobookshelf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: audiobookshelf
+  template:
+    metadata:
+      labels:
+        app: audiobookshelf
+    spec:
+      containers:
+      - image: ghcr.io/advplyr/audiobookshelf:v2.35.1
+        name: audiobookshelf
+        ports:
+          - containerPort: 80
+            protocol: TCP
+        volumeMounts:
+          - mountPath: /config
+            name: config
+          - mountPath: /metadata
+            name: metadata
+          - mountPath: /audiobooks
+            name: audiobooks
+          - mountPath: /podcasts
+            name: podcasts
+        env:
+          - name: TZ
+            value: America/Edmonton
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: audiobookshelf-config
+        - name: metadata
+          persistentVolumeClaim:
+            claimName: audiobookshelf-metadata
+        - name: audiobooks
+          nfs:
+            server: 192.168.1.95
+            path: /srv/audiobookshelf/audiobooks
+            readOnly: true
+
+        - name: podcasts
+          nfs:
+            server: 192.168.1.95
+            path: /srv/audiobookshelf/podcasts
+            readOnly: true
