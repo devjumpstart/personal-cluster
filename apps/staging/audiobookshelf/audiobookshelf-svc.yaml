@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: audiobookshelf
+    kustomize.toolkit.fluxcd.io/name: apps
+    kustomize.toolkit.fluxcd.io/namespace: flux-system
+  name: audiobookshelf-svc
+  namespace: audiobookshelf
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: audiobookshelf
+  type: ClusterIP 
