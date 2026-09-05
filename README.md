@@ -92,6 +92,7 @@ This repository is intended to grow alongside the cluster. Its direction include
 | Kustomize | Composition of reusable manifests and environment-specific overlays |
 | Kubernetes | Workload orchestration and declarative resource management |
 | Git | Version control and source of truth for cluster configuration |
+| Renovate | Automated image scanning for new releases |
 
 ## Project Status
 
