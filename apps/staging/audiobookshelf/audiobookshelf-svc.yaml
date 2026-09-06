@@ -3,10 +3,7 @@ kind: Service
 metadata:
   labels:
     app: audiobookshelf
-    kustomize.toolkit.fluxcd.io/name: apps
-    kustomize.toolkit.fluxcd.io/namespace: flux-system
   name: audiobookshelf-svc
-  namespace: audiobookshelf
 spec:
   ports:
   - port: 80
@@ -14,4 +11,4 @@ spec:
     targetPort: 80
   selector:
     app: audiobookshelf
-  type: ClusterIP 
+  type: ClusterIP
